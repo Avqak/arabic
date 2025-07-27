@@ -1,0 +1,299 @@
+/* Prevent flash of unstyled content */
+html:not([data-theme]) {
+  visibility: hidden;
+}
+
+html[data-theme] {
+  visibility: visible;
+}
+
+/* Dark Mode Styles */
+:root {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --emerald-primary: #022c22;
+  --emerald-secondary: #059669;
+  --emerald-light: #a7f3d0;
+  --emerald-dark: #047857;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --emerald-primary: #10b981;
+  --emerald-secondary: #34d399;
+  --emerald-light: #064e3b;
+  --emerald-dark: #047857;
+}
+
+/* Dark mode transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .bg-pattern {
+  background-color: var(--bg-primary);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23334155' fill-opacity='0.6'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .arabic-pattern {
+  background-color: var(--bg-secondary);
+  background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%2310b981' fill-opacity='0.2'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] header {
+  background-color: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .border-gray-200 {
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .border-gray-300 {
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .shadow-md {
+  box-shadow: 0 4px 6px -1px var(--shadow-color) !important;
+}
+
+[data-theme="dark"] .card-hover:hover {
+  box-shadow: 0 10px 20px var(--shadow-color) !important;
+}
+
+[data-theme="dark"] .bg-gray-50 {
+  background-color: var(--bg-primary) !important;
+}
+
+[data-theme="dark"] .bg-gray-100 {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .bg-gray-200 {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .bg-emerald-100 {
+  background-color: var(--emerald-light) !important;
+}
+
+[data-theme="dark"] .bg-emerald-50 {
+  background-color: var(--emerald-light) !important;
+}
+
+[data-theme="dark"] .bg-emerald-800 {
+  background-color: var(--emerald-dark) !important;
+}
+
+[data-theme="dark"] .text-emerald-800 {
+  color: var(--emerald-primary) !important;
+}
+
+[data-theme="dark"] .text-emerald-200 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .text-gray-500 {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .border-emerald-700 {
+  border-color: var(--emerald-secondary) !important;
+}
+
+/* Dark mode toggle button styles */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.theme-toggle:hover {
+  background-color: var(--emerald-light);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: var(--emerald-light);
+}
+
+/* Dark mode hover states */
+[data-theme="dark"] .hover\:bg-emerald-100:hover {
+  background-color: var(--emerald-light) !important;
+}
+
+[data-theme="dark"] .hover\:bg-gray-50:hover {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .hover\:bg-gray-100:hover {
+  background-color: var(--bg-secondary) !important;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  color: var(--emerald-primary);
+}
+
+[data-theme="dark"] .theme-toggle svg {
+  color: var(--emerald-primary);
+}
+
+/* Dark mode for form inputs */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  border-color: var(--emerald-primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+}
+
+/* Dark mode for modals and popups */
+[data-theme="dark"] .fixed.inset-0 {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+[data-theme="dark"] .popup-overlay {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Dark mode modal content */
+[data-theme="dark"] .fixed.inset-0 .bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] .popup-content {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Dark mode for mobile menu */
+[data-theme="dark"] #mobile-menu {
+  background-color: var(--bg-secondary);
+  border-top-color: var(--border-color);
+}
+
+/* Dark mode for active navigation states */
+[data-theme="dark"] .nav-link.bg-emerald-100,
+[data-theme="dark"] .mobile-nav-link.bg-emerald-100 {
+  background-color: var(--emerald-light) !important;
+  color: var(--emerald-primary) !important;
+}
+
+/* Dark mode for buttons */
+[data-theme="dark"] .bg-emerald-600 {
+  background-color: var(--emerald-primary) !important;
+}
+
+[data-theme="dark"] .bg-emerald-700 {
+  background-color: var(--emerald-dark) !important;
+}
+
+[data-theme="dark"] .hover\:bg-emerald-700:hover {
+  background-color: var(--emerald-dark) !important;
+}
+
+/* Dark mode for footer */
+[data-theme="dark"] footer {
+  background-color: var(--emerald-dark) !important;
+}
+
+/* Dark mode for gallery items */
+[data-theme="dark"] .gallery-overlay {
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+}
+
+/* Dark mode for icon containers */
+[data-theme="dark"] .icon-container {
+  background-color: var(--emerald-light);
+  color: var(--emerald-primary);
+}
+
+/* Dark mode for hero section */
+[data-theme="dark"] .hero-pattern {
+  background-color: var(--emerald-dark);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%2310b981' fill-opacity='0.2'%3E%3Cpath fill-rule='evenodd' d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2L74 40h-2zm4 0l4-4v2L78 40h-2z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Dark mode for social media links */
+[data-theme="dark"] .hover\:text-emerald-300:hover {
+  color: var(--emerald-secondary) !important;
+}
+
+/* Dark mode for form labels */
+[data-theme="dark"] label {
+  color: var(--text-secondary);
+}
+
+/* Dark mode for placeholders */
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Dark mode for filter buttons */
+[data-theme="dark"] .filter-btn {
+  background-color: var(--bg-secondary);
+  color: var(--emerald-primary);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .filter-btn.bg-emerald-600 {
+  background-color: var(--emerald-primary) !important;
+  color: var(--bg-primary) !important;
+}
+
+/* Dark mode for close buttons */
+[data-theme="dark"] .close-popup {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .close-popup:hover {
+  color: var(--emerald-primary);
+}
+
+/* Dark mode for section titles */
+[data-theme="dark"] .section-title::after {
+  background: linear-gradient(to right, var(--emerald-primary), var(--emerald-secondary), var(--emerald-primary));
+} 
