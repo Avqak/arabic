@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>معرض الصور والفيديوهات - شعبة اللغة العربية</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../themes/dark-mode.css">
+  <script src="../themes/dark-mode.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+    
+    * {
+      font-family: 'Tajawal', sans-serif;
+    }
+    
+    .gallery-item {
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+    
+    .popup-overlay {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .popup-content {
+      max-width: 90%;
+      max-height: 90vh;
+    }
+    
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .icon-container {
+      width: 100%;
+      height: 12rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0fdf4;
+      color: #065f46;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center">
+        <div class="text-emerald-800 mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-emerald-800">شعبة اللغة العربية</h1>
+          <p class="text-sm text-gray-600">ثانوية الفلاح بجدة</p>
+        </div>
+      </div>
+
+      <!-- Dark Mode Toggle Button -->
+      <button id="theme-toggle" class="theme-toggle" title="التبديل إلى الوضع الداكن">
+        <svg class="sun-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+
+      <button id="mobile-menu-button" class="md:hidden text-emerald-800">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <nav class="hidden md:block">
+        <ul class="flex space-x-1 space-x-reverse">
+          <li><a href="../index.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">الرئيسية</a></li>
+          <li><a href="../index.html#teachers" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">المعلمون</a></li>
+          <li><a href="../index.html#students" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">الطلاب</a></li>
+          <li><a href="../index.html#department-work" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">أعمال الشعبة</a></li>
+          <li><a href="../index.html#work" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">أعمال الطلاب</a></li>
+          <li><a href="news.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">الأخبار</a></li>
+          <li><a href="gallery.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 bg-emerald-100 transition">معرض الصور</a></li>
+          <li><a href="contact.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">التواصل</a></li>
+        </ul>
+      </nav>
+
+      <!-- Login Button -->
+      <div class="login-btn mr-4">
+        <a href="login.html" class="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition">
+          تسجيل الدخول
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">الرئيسية</a>
+        <a href="../index.html#teachers" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">المعلمون</a>
+        <a href="../index.html#students" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">الطلاب</a>
+        <a href="../index.html#department-work" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">أعمال الشعبة</a>
+        <a href="../index.html#work" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">أعمال الطلاب</a>
+        <a href="news.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">الأخبار</a>
+        <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 bg-emerald-100">معرض الصور</a>
+        <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">التواصل</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mx-auto px-6 py-16">
+    <h1 class="text-center text-3xl font-bold mb-12 text-emerald-800">معرض الصور والفيديوهات</h1>
+    
+    <!-- فلاتر التصنيف -->
+    <div class="flex justify-center mb-8">
+      <div class="inline-flex rounded-md shadow-sm">
+        <button type="button" class="filter-btn px-4 py-2 text-sm font-medium rounded-r-md border border-emerald-600 bg-emerald-600 text-white" data-filter="all">
+          الكل
+        </button>
+        <button type="button" class="filter-btn px-4 py-2 text-sm font-medium border-t border-b border-emerald-600 text-emerald-600" data-filter="image">
+          الصور
+        </button>
+        <button type="button" class="filter-btn px-4 py-2 text-sm font-medium rounded-l-md border border-emerald-600 text-emerald-600" data-filter="video">
+          الفيديوهات
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- صورة 1 -->
+      <div class="gallery-item image" data-popup="popup1">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="p-4 flex-grow">
+            <h3 class="text-lg font-bold text-emerald-800 mb-2">نشاط طلابي</h3>
+            <p class="text-gray-600 text-sm">نشاط اللغة العربية للصف الأول ثانوي</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- فيديو 1 -->
+      <div class="gallery-item video" data-popup="popup2">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="p-4 flex-grow">
+            <h3 class="text-lg font-bold text-emerald-800 mb-2">مسابقة الإلقاء</h3>
+            <p class="text-gray-600 text-sm">فيديو لطلاب الصف الثاني في مسابقة الإلقاء</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- صورة 2 -->
+      <div class="gallery-item image" data-popup="popup3">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <div class="p-4 flex-grow">
+            <h3 class="text-lg font-bold text-emerald-800 mb-2">حفل تكريم</h3>
+            <p class="text-gray-600 text-sm">حفل تكريم الطلاب المتميزين في اللغة العربية</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- فيديو 2 -->
+      <div class="gallery-item video" data-popup="popup4">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="p-4 flex-grow">
+            <h3 class="text-lg font-bold text-emerald-800 mb-2">ورشة عمل</h3>
+            <p class="text-gray-600 text-sm">ورشة عمل في فنون الكتابة الإبداعية</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- صورة 3 -->
+      <div class="gallery-item image" data-popup="popup5">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <div class="p-4 flex-grow">
+            <h3 class="text-lg font-bold text-emerald-800 mb-2">معرض الكتاب</h3>
+            <p class="text-gray-600 text-sm">زيارة طلاب الشعبة لمعرض الكتاب الدولي</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- صورة 4 -->
+      <div class="gallery-item image" data-popup="popup6">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+          </div>
+          <div class="p-4 flex-grow">
+            <h3 class="text-lg font-bold text-emerald-800 mb-2">مسرحية مدرسية</h3>
+            <p class="text-gray-600 text-sm">طلاب الصف الثالث في مسرحية "لغتنا الجميلة"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- فيديو 3 -->
+      <div class="gallery-item video" data-popup="popup7">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+            </svg>
+          </div>
+          <div class="p-4 flex-grow">
+            <h3 class="text-lg font-bold text-emerald-800 mb-2">ندوة أدبية</h3>
+            <p class="text-gray-600 text-sm">ندوة حول الأدب السعودي المعاصر</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- صورة 5 -->
+      <div class="gallery-item image" data-popup="popup8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div class="p-4 flex-grow">
+            <h3 class="text-lg font-bold text-emerald-800 mb-2">مشروع تخرج</h3>
+            <p class="text-gray-600 text-sm">عرض مشاريع تخرج طلاب الصف الثالث ثانوي</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- النوافذ المنبثقة -->
+  <!-- صورة 1 -->
+  <div id="popup1" class="fixed inset-0 z-50 flex items-center justify-center popup-overlay hidden">
+    <div class="bg-white rounded-lg shadow-xl popup-content">
+      <div class="p-4">
+        <button class="close-popup absolute top-2 right-2 text-gray-700 hover:text-gray-900 text-2xl font-bold">&times;</button>
+        <div class="icon-container" style="height: 20rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-emerald-800 mb-2">نشاط طلابي</h3>
+          <p class="text-gray-700">نشاط اللغة العربية للصف الأول ثانوي الذي أقيم في يوم الأحد الموافق 15 مايو 2025</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- فيديو 1 -->
+  <div id="popup2" class="fixed inset-0 z-50 flex items-center justify-center popup-overlay hidden">
+    <div class="bg-white rounded-lg shadow-xl popup-content">
+      <div class="p-4">
+        <button class="close-popup absolute top-2 right-2 text-gray-700 hover:text-gray-900 text-2xl font-bold">&times;</button>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xl font-bold text-emerald-800 mb-2">مسابقة الإلقاء</h3>
+          <p class="text-gray-700">فيديو كامل لمسابقة الإلقاء التي نظمتها الشعبة لطلاب الصف الثاني ثانوي</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="../login system/auth.js"></script>
+  <script>
+    // فتح النافذة المنبثقة
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const popupId = this.getAttribute('data-popup');
+        const popup = document.getElementById(popupId);
+        if (popup) {
+          popup.classList.remove('hidden');
+          document.body.style.overflow = 'hidden'; // منع التمرير عند فتح النافذة
+        }
+      });
+    });
+
+    // إغلاق النافذة المنبثقة
+    document.querySelectorAll('.close-popup').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const popup = this.closest('.popup-overlay');
+        if (popup) {
+          popup.classList.add('hidden');
+          document.body.style.overflow = ''; // إعادة تمكين التمرير
+        }
+      });
+    });
+
+    // إغلاق النافذة عند النقر خارج المحتوى
+    document.querySelectorAll('.popup-overlay').forEach(popup => {
+      popup.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.add('hidden');
+          document.body.style.overflow = ''; // إعادة تمكين التمرير
+        }
+      });
+    });
+
+    // تصفية العناصر حسب النوع
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        
+        // تحديث حالة الأزرار
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-emerald-600', 'text-white');
+          b.classList.add('text-emerald-600');
+        });
+        
+        this.classList.add('bg-emerald-600', 'text-white');
+        this.classList.remove('text-emerald-600');
+        
+        // تصفية العناصر
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          if (filter === 'all' || item.classList.contains(filter)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // القائمة المتنقلة
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
