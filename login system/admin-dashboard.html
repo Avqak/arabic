@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>لوحة الإدارة - شعبة اللغة العربية</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="dark-mode.css">
-  <script src="dark-mode.js"></script>
+  <link rel="stylesheet" href="../themes/dark-mode.css">
+  <script src="../themes/dark-mode.js"></script>
   
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
@@ -14,20 +14,10 @@
     * {
       font-family: 'Tajawal', sans-serif;
     }
-
-    .bg-pattern {
-      background-color: #f8f9fa;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-
-    .arabic-pattern {
-      background-color: rgba(255, 255, 255, 0.8);
-      background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23064e3b' fill-opacity='0.1'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
   </style>
 </head>
 
-<body class="bg-pattern">
+<body class="bg-gray-50">
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-white shadow-md">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -38,153 +28,55 @@
           </svg>
         </div>
         <div>
-          <h1 class="text-xl font-bold text-emerald-800">شعبة اللغة العربية</h1>
-          <p class="text-sm text-gray-600">ثانوية الفلاح بجدة</p>
+          <h1 class="text-xl font-bold text-emerald-800">لوحة الإدارة</h1>
+          <p class="text-sm text-gray-600">شعبة اللغة العربية</p>
         </div>
       </div>
 
-      <!-- Dark Mode Toggle Button -->
-      <button id="theme-toggle" class="theme-toggle" title="التبديل إلى الوضع الداكن">
-        <svg class="sun-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-      </button>
-
       <nav class="hidden md:block">
         <ul class="flex space-x-1 space-x-reverse">
-          <li><a href="saved_resource.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">الرئيسية</a></li>
-          <li><a href="admin-dashboard.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 bg-emerald-100 transition">لوحة الإدارة</a></li>
+          <li><a href="../index.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">الرئيسية</a></li>
+          <li><a href="profile.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">الملف الشخصي</a></li>
         </ul>
       </nav>
 
-      <!-- Login Button -->
       <div class="login-btn mr-4">
-        <a href="login.html" class="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition">
-          تسجيل الدخول
-        </a>
+        <button onclick="auth.logout()" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition">
+          تسجيل الخروج
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Admin Dashboard Section -->
+  <!-- Dashboard Content -->
   <section class="py-16">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-emerald-800 mb-4">لوحة الإدارة</h2>
-        <p class="text-gray-600">إدارة طلبات الحسابات الإدارية والمستخدمين</p>
+        <h2 class="text-3xl font-bold text-emerald-800">لوحة الإدارة</h2>
+        <p class="text-gray-600 mt-4">إدارة النظام وطلبات الحسابات الإدارية</p>
       </div>
       
-      <div class="max-w-6xl mx-auto">
-        <!-- Statistics Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div class="bg-white p-6 rounded-lg shadow-md arabic-pattern">
-            <div class="flex items-center">
-              <div class="p-3 bg-emerald-100 rounded-full">
-                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
-                </svg>
-              </div>
-              <div class="mr-4">
-                <p class="text-sm font-medium text-gray-600">إجمالي المستخدمين</p>
-                <p class="text-2xl font-bold text-emerald-800" id="totalUsers">0</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md arabic-pattern">
-            <div class="flex items-center">
-              <div class="p-3 bg-yellow-100 rounded-full">
-                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <div class="mr-4">
-                <p class="text-sm font-medium text-gray-600">طلبات معلقة</p>
-                <p class="text-2xl font-bold text-yellow-600" id="pendingRequests">0</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md arabic-pattern">
-            <div class="flex items-center">
-              <div class="p-3 bg-green-100 rounded-full">
-                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <div class="mr-4">
-                <p class="text-sm font-medium text-gray-600">طلبات مقبولة</p>
-                <p class="text-2xl font-bold text-green-600" id="approvedRequests">0</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="bg-white p-6 rounded-lg shadow-md arabic-pattern">
-            <div class="flex items-center">
-              <div class="p-3 bg-red-100 rounded-full">
-                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <div class="mr-4">
-                <p class="text-sm font-medium text-gray-600">طلبات مرفوضة</p>
-                <p class="text-2xl font-bold text-red-600" id="rejectedRequests">0</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div id="admin-content" class="hidden">
+        <!-- Admin content will be loaded here -->
+      </div>
 
-        <!-- Admin Requests Table -->
-        <div class="bg-white rounded-lg shadow-md arabic-pattern overflow-hidden">
-          <div class="px-6 py-4 border-b border-gray-200">
-            <h3 class="text-lg font-bold text-emerald-800">طلبات الحسابات الإدارية</h3>
-          </div>
-          
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">المتقدم</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">البريد الإلكتروني</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">المنصب</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاريخ الطلب</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الحالة</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الإجراءات</th>
-                </tr>
-              </thead>
-              <tbody class="bg-white divide-y divide-gray-200" id="adminRequestsTable">
-                <!-- Requests will be loaded here -->
-              </tbody>
-            </table>
-          </div>
+      <div id="access-denied" class="text-center hidden">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-red-600 mb-4">غير مخول بالوصول</h3>
+          <p class="text-gray-600 mb-6">ليس لديك صلاحيات للوصول إلى لوحة الإدارة</p>
+          <a href="../index.html" class="bg-emerald-600 text-white px-6 py-3 rounded-md hover:bg-emerald-700 transition">
+            العودة للرئيسية
+          </a>
         </div>
+      </div>
 
-        <!-- Users Management -->
-        <div class="bg-white rounded-lg shadow-md arabic-pattern mt-8 overflow-hidden">
-          <div class="px-6 py-4 border-b border-gray-200">
-            <h3 class="text-lg font-bold text-emerald-800">إدارة المستخدمين</h3>
-          </div>
-          
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الاسم</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">البريد الإلكتروني</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">نوع المستخدم</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاريخ التسجيل</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">آخر تسجيل دخول</th>
-                  <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">الإجراءات</th>
-                </tr>
-              </thead>
-              <tbody class="bg-white divide-y divide-gray-200" id="usersTable">
-                <!-- Users will be loaded here -->
-              </tbody>
-            </table>
-          </div>
+      <div id="login-required" class="text-center">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-emerald-800 mb-4">يجب تسجيل الدخول أولاً</h3>
+          <p class="text-gray-600 mb-6">يرجى تسجيل الدخول كمدير للوصول إلى لوحة الإدارة</p>
+          <a href="../pages/login.html" class="bg-emerald-600 text-white px-6 py-3 rounded-md hover:bg-emerald-700 transition">
+            تسجيل الدخول
+          </a>
         </div>
       </div>
     </div>
@@ -193,188 +85,209 @@
   <script src="auth.js"></script>
   <script src="email-service.js"></script>
   <script>
-    // Check if user is logged in and is admin
+    // Check if user is admin and display dashboard
     document.addEventListener('DOMContentLoaded', function() {
-      if (!auth.isLoggedIn()) {
-        window.location.href = 'login.html';
+      const currentUser = auth.getCurrentUser();
+      
+      if (!currentUser) {
+        document.getElementById('login-required').classList.remove('hidden');
         return;
       }
 
       if (!auth.isAdmin()) {
-        alert('ليس لديك صلاحية للوصول إلى لوحة الإدارة');
-        window.location.href = 'saved_resource.html';
+        document.getElementById('access-denied').classList.remove('hidden');
+        document.getElementById('login-required').classList.add('hidden');
         return;
       }
 
-      loadDashboardData();
+      // User is admin, show dashboard
+      document.getElementById('login-required').classList.add('hidden');
+      document.getElementById('admin-content').classList.remove('hidden');
+      
+      loadAdminDashboard();
     });
 
-    // Load dashboard data
-    function loadDashboardData() {
-      loadStatistics();
-      loadAdminRequests();
-      loadUsers();
-    }
-
-    // Load statistics
-    function loadStatistics() {
-      const users = JSON.parse(localStorage.getItem('users')) || [];
-      const adminRequests = JSON.parse(localStorage.getItem('adminRequests')) || [];
-      
-      document.getElementById('totalUsers').textContent = users.length;
-      document.getElementById('pendingRequests').textContent = adminRequests.filter(req => req.status === 'pending').length;
-      document.getElementById('approvedRequests').textContent = adminRequests.filter(req => req.status === 'approved').length;
-      document.getElementById('rejectedRequests').textContent = adminRequests.filter(req => req.status === 'rejected').length;
-    }
-
-    // Load admin requests
-    function loadAdminRequests() {
+    function loadAdminDashboard() {
       const adminRequests = auth.getAllAdminRequests();
-      const tableBody = document.getElementById('adminRequestsTable');
-      
-      if (adminRequests.length === 0) {
-        tableBody.innerHTML = `
-          <tr>
-            <td colspan="6" class="px-6 py-4 text-center text-gray-500">
-              لا توجد طلبات حالياً
-            </td>
-          </tr>
-        `;
-        return;
-      }
+      const pendingRequests = adminRequests.filter(req => req.status === 'pending');
 
-      tableBody.innerHTML = adminRequests.map(request => `
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm font-medium text-gray-900">${request.firstName} ${request.lastName}</div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900">${request.email}</div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900">${request.position}</div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900">${new Date(request.requestDate).toLocaleDateString('ar-SA')}</div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-              request.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-              request.status === 'approved' ? 'bg-green-100 text-green-800' :
-              'bg-red-100 text-red-800'
-            }">
-              ${request.status === 'pending' ? 'معلق' : request.status === 'approved' ? 'مقبول' : 'مرفوض'}
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-            ${request.status === 'pending' ? `
-              <button onclick="approveRequest('${request.id}')" class="text-green-600 hover:text-green-900 ml-2">قبول</button>
-              <button onclick="rejectRequest('${request.id}')" class="text-red-600 hover:text-red-900">رفض</button>
-            ` : '-'}
-          </td>
-        </tr>
-      `).join('');
+      const adminContent = document.getElementById('admin-content');
+      adminContent.innerHTML = `
+        <div class="space-y-8">
+          <!-- Dashboard Stats -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+              <div class="text-3xl font-bold text-emerald-600 mb-2">${pendingRequests.length}</div>
+              <div class="text-gray-700">طلبات قيد الانتظار</div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+              <div class="text-3xl font-bold text-green-600 mb-2">${adminRequests.filter(req => req.status === 'approved').length}</div>
+              <div class="text-gray-700">طلبات مقبولة</div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+              <div class="text-3xl font-bold text-red-600 mb-2">${adminRequests.filter(req => req.status === 'rejected').length}</div>
+              <div class="text-gray-700">طلبات مرفوضة</div>
+            </div>
+          </div>
+
+          <!-- Pending Admin Requests -->
+          <div class="bg-white rounded-lg shadow-md">
+            <div class="p-6 border-b border-gray-200">
+              <h3 class="text-xl font-bold text-emerald-800">طلبات الحسابات الإدارية قيد الانتظار</h3>
+            </div>
+            <div class="p-6">
+              ${pendingRequests.length > 0 ? `
+                <div class="space-y-4">
+                  ${pendingRequests.map(request => `
+                    <div class="border border-gray-200 rounded-lg p-4">
+                      <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                          <h4 class="font-bold text-gray-900">${request.firstName} ${request.lastName}</h4>
+                          <p class="text-sm text-gray-600 mb-2">${request.email}</p>
+                          <p class="text-sm text-gray-600 mb-2">الهاتف: ${request.phone}</p>
+                          <p class="text-sm text-gray-600 mb-2">المنصب: ${request.position}</p>
+                          <p class="text-sm text-gray-700 mb-2">السبب: ${request.reason}</p>
+                          <p class="text-xs text-gray-500">تاريخ الطلب: ${new Date(request.requestDate).toLocaleDateString('ar-SA')}</p>
+                        </div>
+                        <div class="flex space-x-2 space-x-reverse">
+                          <button onclick="approveRequest('${request.id}')" 
+                                  class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition text-sm">
+                            قبول
+                          </button>
+                          <button onclick="rejectRequest('${request.id}')" 
+                                  class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition text-sm">
+                            رفض
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              ` : `
+                <div class="text-center text-gray-500 py-8">
+                  <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  لا توجد طلبات قيد الانتظار
+                </div>
+              `}
+            </div>
+          </div>
+
+          <!-- All Admin Requests History -->
+          <div class="bg-white rounded-lg shadow-md">
+            <div class="p-6 border-b border-gray-200">
+              <h3 class="text-xl font-bold text-emerald-800">سجل جميع الطلبات</h3>
+            </div>
+            <div class="p-6">
+              ${adminRequests.length > 0 ? `
+                <div class="overflow-x-auto">
+                  <table class="min-w-full">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">الاسم</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">البريد الإلكتروني</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">المنصب</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">تاريخ الطلب</th>
+                        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">الحالة</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                      ${adminRequests.map(request => `
+                        <tr>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            ${request.firstName} ${request.lastName}
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            ${request.email}
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            ${request.position}
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            ${new Date(request.requestDate).toLocaleDateString('ar-SA')}
+                          </td>
+                          <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusClasses(request.status)}">
+                              ${getStatusText(request.status)}
+                            </span>
+                          </td>
+                        </tr>
+                      `).join('')}
+                    </tbody>
+                  </table>
+                </div>
+              ` : `
+                <div class="text-center text-gray-500 py-8">
+                  لا توجد طلبات
+                </div>
+              `}
+            </div>
+          </div>
+        </div>
+      `;
     }
 
-    // Load users
-    function loadUsers() {
-      const users = JSON.parse(localStorage.getItem('users')) || [];
-      const tableBody = document.getElementById('usersTable');
-      
-      if (users.length === 0) {
-        tableBody.innerHTML = `
-          <tr>
-            <td colspan="6" class="px-6 py-4 text-center text-gray-500">
-              لا توجد مستخدمين
-            </td>
-          </tr>
-        `;
-        return;
-      }
-
-      tableBody.innerHTML = users.map(user => `
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm font-medium text-gray-900">${user.firstName} ${user.lastName}</div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900">${user.email}</div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-              user.userType === 'admin' ? 'bg-purple-100 text-purple-800' :
-              user.userType === 'teacher' ? 'bg-blue-100 text-blue-800' :
-              user.userType === 'student' ? 'bg-green-100 text-green-800' :
-              'bg-gray-100 text-gray-800'
-            }">
-              ${user.userType === 'admin' ? 'إداري' : 
-                user.userType === 'teacher' ? 'معلم' :
-                user.userType === 'student' ? 'طالب' : 'ولي أمر'}
-            </span>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900">${new Date(user.createdAt).toLocaleDateString('ar-SA')}</div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap">
-            <div class="text-sm text-gray-900">${user.lastLogin ? new Date(user.lastLogin).toLocaleDateString('ar-SA') : 'لم يسجل دخول'}</div>
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-            <button onclick="deleteUser('${user.id}')" class="text-red-600 hover:text-red-900">حذف</button>
-          </td>
-        </tr>
-      `).join('');
-    }
-
-    // Approve admin request
     function approveRequest(requestId) {
       if (confirm('هل أنت متأكد من قبول هذا الطلب؟')) {
         if (auth.handleAdminApproval(requestId, true)) {
-          // Send approval notification email
+          auth.showNotification('تم قبول الطلب وإنشاء الحساب الإداري', 'success');
+          
+          // Send approval email
           const adminRequests = auth.getAllAdminRequests();
           const request = adminRequests.find(req => req.id === requestId);
           if (request) {
             emailService.sendApprovalNotification(request.email, true);
           }
           
-          auth.showNotification('تم قبول الطلب بنجاح', 'success');
-          loadDashboardData();
+          // Reload dashboard
+          loadAdminDashboard();
         } else {
           auth.showNotification('حدث خطأ أثناء قبول الطلب', 'error');
         }
       }
     }
 
-    // Reject admin request
     function rejectRequest(requestId) {
-      const reason = prompt('يرجى إدخال سبب الرفض (اختياري):');
+      const reason = prompt('سبب الرفض (اختياري):');
       if (confirm('هل أنت متأكد من رفض هذا الطلب؟')) {
         if (auth.handleAdminApproval(requestId, false)) {
-          // Send rejection notification email
+          auth.showNotification('تم رفض الطلب', 'success');
+          
+          // Send rejection email
           const adminRequests = auth.getAllAdminRequests();
           const request = adminRequests.find(req => req.id === requestId);
           if (request) {
             emailService.sendApprovalNotification(request.email, false, reason);
           }
           
-          auth.showNotification('تم رفض الطلب بنجاح', 'success');
-          loadDashboardData();
+          // Reload dashboard
+          loadAdminDashboard();
         } else {
           auth.showNotification('حدث خطأ أثناء رفض الطلب', 'error');
         }
       }
     }
 
-    // Delete user
-    function deleteUser(userId) {
-      if (confirm('هل أنت متأكد من حذف هذا المستخدم؟')) {
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const updatedUsers = users.filter(user => user.id !== userId);
-        localStorage.setItem('users', JSON.stringify(updatedUsers));
-        
-        auth.showNotification('تم حذف المستخدم بنجاح', 'success');
-        loadDashboardData();
+    function getStatusClasses(status) {
+      switch(status) {
+        case 'pending': return 'bg-yellow-100 text-yellow-800';
+        case 'approved': return 'bg-green-100 text-green-800';
+        case 'rejected': return 'bg-red-100 text-red-800';
+        default: return 'bg-gray-100 text-gray-800';
+      }
+    }
+
+    function getStatusText(status) {
+      switch(status) {
+        case 'pending': return 'قيد الانتظار';
+        case 'approved': return 'مقبول';
+        case 'rejected': return 'مرفوض';
+        default: return status;
       }
     }
   </script>
 </body>
-</html> 
+</html>
