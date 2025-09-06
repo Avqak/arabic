@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الملف الشخصي - شعبة اللغة العربية</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../themes/dark-mode.css">
+  <script src="../themes/dark-mode.js"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+    * {
+      font-family: 'Tajawal', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center">
+        <div class="text-emerald-800 mr-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-emerald-800">شعبة اللغة العربية</h1>
+          <p class="text-sm text-gray-600">ثانوية الفلاح بجدة</p>
+        </div>
+      </div>
+
+      <nav class="hidden md:block">
+        <ul class="flex space-x-1 space-x-reverse">
+          <li><a href="../index.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">الرئيسية</a></li>
+          <li><a href="../pages/contact.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">التواصل</a></li>
+        </ul>
+      </nav>
+
+      <div class="login-btn mr-4">
+        <a href="../pages/login.html" class="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition">
+          تسجيل الدخول
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Profile Content -->
+  <section class="py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-emerald-800">الملف الشخصي</h2>
+        <p class="text-gray-600 mt-4">عرض وتحديث معلوماتك الشخصية</p>
+      </div>
+      
+      <div id="profile-content" class="hidden">
+        <!-- Profile content will be loaded here by JavaScript -->
+      </div>
+
+      <div id="login-required" class="text-center">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-emerald-800 mb-4">يجب تسجيل الدخول أولاً</h3>
+          <p class="text-gray-600 mb-6">يرجى تسجيل الدخول لعرض ملفك الشخصي</p>
+          <a href="../pages/login.html" class="bg-emerald-600 text-white px-6 py-3 rounded-md hover:bg-emerald-700 transition">
+            تسجيل الدخول
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="auth.js"></script>
+  <script>
+    // Check if user is logged in and display profile
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = auth.getCurrentUser();
+      
+      if (currentUser) {
+        document.getElementById('login-required').classList.add('hidden');
+        document.getElementById('profile-content').classList.remove('hidden');
+        
+        // Load profile content
+        loadProfileContent(currentUser);
+      }
+    });
+
+    function loadProfileContent(user) {
+      const profileContent = document.getElementById('profile-content');
+      profileContent.innerHTML = `
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-emerald-800 p-6 text-white text-center">
+            <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-emerald-800">
+                ${user.firstName.charAt(0)}${user.lastName.charAt(0)}
+              </span>
+            </div>
+            <h3 class="text-xl font-bold">${user.firstName} ${user.lastName}</h3>
+            <p class="text-emerald-100">${getUserTypeText(user.userType)}</p>
+          </div>
+          
+          <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">الاسم الأول</label>
+                <div class="bg-gray-50 p-3 rounded-md">${user.firstName}</div>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">اسم العائلة</label>
+                <div class="bg-gray-50 p-3 rounded-md">${user.lastName}</div>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">البريد الإلكتروني</label>
+                <div class="bg-gray-50 p-3 rounded-md">${user.email}</div>
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">نوع المستخدم</label>
+                <div class="bg-gray-50 p-3 rounded-md">${getUserTypeText(user.userType)}</div>
+              </div>
+            </div>
+            
+            <div class="mt-6 flex space-x-4 space-x-reverse">
+              <a href="settings.html" class="bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700 transition">
+                تعديل الملف الشخصي
+              </a>
+              <button onclick="auth.logout()" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition">
+                تسجيل الخروج
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function getUserTypeText(userType) {
+      const types = {
+        'student': 'طالب',
+        'teacher': 'معلم',
+        'parent': 'ولي أمر',
+        'admin': 'إداري'
+      };
+      return types[userType] || userType;
+    }
+  </script>
+</body>
+</html>
