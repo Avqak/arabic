@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>أخبار شعبة اللغة العربية</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- منع الوميض في الوضع الداكن -->
+  <script>
+    // تطبيق الوضع الداكن فوراً قبل تحميل CSS
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  
+  <!-- CSS مدمج لمنع الوميض -->
+  <style>
+    /* منع الوميض في الوضع الداكن */
+    html[data-theme="dark"] {
+      background-color: #0f172a !important;
+      color: #a7f3d0 !important;
+    }
+    
+    html[data-theme="dark"] body {
+      background-color: #0f172a !important;
+      color: #a7f3d0 !important;
+    }
+    
+    html[data-theme="dark"] .bg-white {
+      background-color: #1e293b !important;
+    }
+    
+    html[data-theme="dark"] .bg-gray-50 {
+      background-color: #0f172a !important;
+    }
+    
+    html[data-theme="dark"] .text-emerald-800 {
+      color: #34d399 !important;
+    }
+    
+    html[data-theme="dark"] .text-gray-600,
+    html[data-theme="dark"] .text-gray-700 {
+      color: #d1d5db !important;
+    }
+  </style>
+  
+  <link rel="stylesheet" href="../themes/dark-mode.css">
+  <script src="../themes/dark-mode.js"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+    * {
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    /* تخصيص العنصر النشط في القائمة */
+    .nav-item.active .nav-link,
+    .mobile-nav-item.active .mobile-nav-link {
+      background-color: #d1fae5; /* اللون الأخضر الفاتح */
+        font-weight: 500;
+  }
+
+/* تأثيرات التركيز */
+    .nav-link:focus,
+    .mobile-nav-link:focus,
+    .header-button:focus {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+    }
+
+    .bg-pattern {
+      background-color: #f8f9fa;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .arabic-pattern {
+      background-color: #ffffff;
+      background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23064e3b' fill-opacity='0.05'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, #064e3b, #10b981, #064e3b);
+      border-radius: 3px;
+    }
+    /* إضافة تأثير الضغط على الروابط في الهيدر */
+      .nav-link:active {
+          background-color: #10b981 !important;
+          color: white !important;
+      }
+
+      .mobile-nav-link:active {
+          background-color: #10b981 !important;
+          color: white !important;
+      }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+
+<!-- Header المعدل -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <div class="flex items-center">
+      <div class="text-emerald-800 mr-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold text-emerald-800">شعبة اللغة العربية</h1>
+        <p class="text-sm text-gray-600">ثانوية الفلاح بجدة</p>
+      </div>
+    </div>
+
+      <div class="flex items-center">
+        <nav class="hidden md:block">
+          <ul class="flex space-x-1 space-x-reverse">
+            <li><a href="../index.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">الرئيسية</a></li>
+            <li><a href="../index.html#teachers" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">المعلمون</a></li>
+            <li><a href="../index.html#students" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">الطلاب</a></li>
+            <li><a href="../index.html#department-work" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">أعمال الشعبة</a></li>
+            <li><a href="../index.html#work" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">أعمال الطلاب</a></li>
+            <li><a href="news.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 bg-emerald-100 transition">الأخبار</a></li>
+            <li><a href="gallery.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">معرض الصور</a></li>
+            <li><a href="contact.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-800 hover:bg-emerald-100 transition">التواصل</a></li>
+          </ul>
+        </nav>
+      </div>
+      
+      <!-- Header Buttons - Desktop and Mobile -->
+      <div class="flex items-center space-x-2 space-x-reverse">
+        <!-- Mobile Menu Button - فقط في الجوال -->
+        <button id="mobile-menu-button" class="md:hidden text-emerald-800 p-2 hover:bg-emerald-100 rounded-md transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        
+        <!-- Dark Mode Toggle Button - دائماً بجانب زر تسجيل الدخول -->
+        <button id="theme-toggle" class="theme-toggle" title="التبديل إلى الوضع الداكن">
+          <svg class="sun-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Login Button - موحد عبر auth.js -->
+        <div class="login-btn">
+          <a href="login.html" class="px-4 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 transition text-sm">تسجيل الدخول</a>
+        </div>
+      </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="../index.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">الرئيسية</a>
+      <a href="../index.html#teachers" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">المعلمون</a>
+      <a href="../index.html#students" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">الطلاب</a>
+      <a href="../index.html#department-work" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">أعمال الشعبة</a>
+      <a href="../index.html#work" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">أعمال الطلاب</a>
+      <a href="news.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 bg-emerald-100">الأخبار</a>
+      <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">معرض الصور</a>
+      <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-800 hover:bg-emerald-100">التواصل</a>
+    </div>
+  </div>
+</header>
+
+<!-- باقي محتوى الصفحة -->
+<div class="container mx-auto px-6 py-16">
+  <h1 class="text-center text-3xl font-bold mb-12 text-emerald-800 section-title">أخبار شعبة اللغة العربية</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+    <!-- خبر 1 -->
+    <div class="bg-white rounded-lg shadow-md p-6 card-hover arabic-pattern">
+      <h3 class="text-lg font-bold text-emerald-800 mb-2">مسابقة الإلقاء الفردي</h3>
+      <p class="text-gray-700 text-sm mb-4">أقامت الشعبة مسابقة الإلقاء الفردي...</p>
+      <button onclick="openModal('modal1')" class="text-sm text-emerald-800 font-semibold hover:underline">اقرأ المزيد</button>
+      <span class="text-sm text-gray-500 block mt-2">بتاريخ: 15 مايو 2025</span>
+    </div>
+
+    <!-- خبر 2 -->
+    <div class="bg-white rounded-lg shadow-md p-6 card-hover arabic-pattern">
+      <h3 class="text-lg font-bold text-emerald-800 mb-2">زيارة ميدانية للمكتبة</h3>
+      <p class="text-gray-700 text-sm mb-4">نظّمت الشعبة زيارة مميزة لمكتبة...</p>
+      <button onclick="openModal('modal2')" class="text-sm text-emerald-800 font-semibold hover:underline">اقرأ المزيد</button>
+      <span class="text-sm text-gray-500 block mt-2">بتاريخ: 10 مايو 2025</span>
+    </div>
+
+    <!-- خبر 3 -->
+    <div class="bg-white rounded-lg shadow-md p-6 card-hover arabic-pattern">
+      <h3 class="text-lg font-bold text-emerald-800 mb-2">حصة نموذجية في النحو</h3>
+      <p class="text-gray-700 text-sm mb-4">أقيمت حصة نموذجية لشرح أساليب...</p>
+      <button onclick="openModal('modal3')" class="text-sm text-emerald-800 font-semibold hover:underline">اقرأ المزيد</button>
+      <span class="text-sm text-gray-500 block mt-2">بتاريخ: 5 مايو 2025</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- النوافذ المنبثقة -->
+<div id="modal1" class="fixed hidden inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-6 rounded-lg max-w-md w-full text-right shadow-lg">
+    <h3 class="text-xl font-bold text-emerald-800 mb-4">مسابقة الإلقاء الفردي</h3>
+    <p class="text-gray-700 text-sm mb-4">
+      أقامت الشعبة مسابقة الإلقاء الفردي لطلاب الصف الثاني، حيث أبدع الطلاب في تقديم النصوص الشعرية والخطب الهادفة، وقد تميزت المشاركات بالتنوع والقوة في الأداء.
+    </p>
+    <button onclick="closeModal('modal1')" class="mt-2 text-sm font-bold text-red-600 hover:underline">إغلاق</button>
+  </div>
+</div>
+
+<div id="modal2" class="fixed hidden inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-6 rounded-lg max-w-md w-full text-right shadow-lg">
+    <h3 class="text-xl font-bold text-emerald-800 mb-4">زيارة ميدانية للمكتبة</h3>
+    <p class="text-gray-700 text-sm mb-4">
+      نظّمت الشعبة زيارة مميزة لمكتبة الملك فهد العامة لتعريف الطلاب بأهمية القراءة والاطلاع، حيث تجولوا في أروقة المكتبة واستمعوا لشرح مفصل عن محتوياتها وخدماتها.
+    </p>
+    <button onclick="closeModal('modal2')" class="mt-2 text-sm font-bold text-red-600 hover:underline">إغلاق</button>
+  </div>
+</div>
+
+<div id="modal3" class="fixed hidden inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white p-6 rounded-lg max-w-md w-full text-right shadow-lg">
+    <h3 class="text-xl font-bold text-emerald-800 mb-4">حصة نموذجية في النحو</h3>
+    <p class="text-gray-700 text-sm mb-4">
+      أقيمت حصة نموذجية لشرح أساليب الاستثناء في اللغة العربية، وشارك الطلاب في تطبيقات عملية وتمارين تفاعلية ساعدت في ترسيخ المفاهيم النحوية لديهم.
+    </p>
+    <button onclick="closeModal('modal3')" class="mt-2 text-sm font-bold text-red-600 hover:underline">إغلاق</button>
+  </div>
+</div>
+
+
+
+  <script src="../login system/auth.js"></script>
+
+<!-- سكريبت القائمة المتنقلة -->
+<script>
+  // القائمة المتنقلة
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // إغلاق القائمة عند النقر على أي عنصر
+    const menuItems = mobileMenu.querySelectorAll('a');
+    menuItems.forEach(item => {
+      item.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  });
+
+  // وظائف النوافذ المنبثقة
+  function openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+</script>
+
+</body>
+</html>
